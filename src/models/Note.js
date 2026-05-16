@@ -5,7 +5,7 @@ const noteSchema = new mongoose.Schema({
   description: { type: String, required: true },
   date:        { type: Date, required: true },
   user:        { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  category:    { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
+  category:    { type: String, required: true },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Note', noteSchema);

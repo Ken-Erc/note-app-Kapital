@@ -2,6 +2,7 @@ const Note = require('../models/Note');
 
 // Create Note
 exports.createNote = async (req, res) => {
+  console.log('Creating note with data:', req.body);
   try {
     const { title, description, date, category } = req.body;
 
@@ -18,6 +19,7 @@ exports.createNote = async (req, res) => {
       note
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: err.message });
   }
 };
@@ -38,7 +40,7 @@ exports.getNotes = async (req, res) => {
     }
 
     const notes = await Note.find(filter)
-      .populate('category', 'name description');
+      
 
     res.json(notes);
   } catch (err) {
@@ -52,7 +54,7 @@ exports.getNoteById = async (req, res) => {
     const note = await Note.findOne({
       _id: req.params.id,
       user: req.user._id
-    }).populate('category', 'name description');
+    })
 
     if (!note) {
       return res.status(404).json({ message: 'Note not found' });
