@@ -4,12 +4,12 @@ const Note = require('../models/Note');
 exports.createNote = async (req, res) => {
   console.log('Creating note with data:', req.body);
   try {
-    const { title, description, date, category } = req.body;
+    const { title, description, category } = req.body;
 
     const note = await Note.create({
       title,
       description,
-      date,
+      date: new Date(), // Set current date
       category,
       user: req.user._id
     });

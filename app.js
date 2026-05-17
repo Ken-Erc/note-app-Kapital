@@ -26,12 +26,16 @@ const swaggerOptions = {
       version: '1.0.0',
       description: 'API documentation for the Note Taking App',
     },
-    servers: [
-      {
-        url: 'http://localhost:5000',
-        description: 'Development server',
-      },
-    ],
+  servers: [
+  {
+    url: process.env.NODE_ENV === 'production'
+      ? 'https://note-app-kapital.onrender.com'
+      : 'http://localhost:5000',
+    description: process.env.NODE_ENV === 'production'
+      ? 'Production server'
+      : 'Development server',
+  },
+],
     components: {
       securitySchemes: {
         bearerAuth: {
@@ -59,8 +63,11 @@ connectDB().then(() => {
     console.log(`Server running on port ${process.env.PORT}`);
     console.log(`Swagger docs available at http://localhost:${process.env.PORT}/api-docs`);
   });
-});
-
+})
+.catch(err => {
+    console.error('Failed to connect to MongoDB:', err.message);
+    process.exit(1);
+  });
 
 
 

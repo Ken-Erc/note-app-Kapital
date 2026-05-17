@@ -20,9 +20,10 @@ const todoSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    dueDate: {
-      type: Date,
-    },
+   dueDate: {
+  type: Date,
+  default: Date.now,  // ✅ add this
+},
   },
   { timestamps: true }
 );

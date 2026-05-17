@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const noteSchema = new mongoose.Schema({
   title:       { type: String, required: true },
   description: { type: String, required: true },
-  date:        { type: Date, required: true },
+ date: {
+  type: Date,
+  default: Date.now  // ✅ auto-generates on creation
+},
   user:        { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   category:    { type: String, required: true },
 }, { timestamps: true });

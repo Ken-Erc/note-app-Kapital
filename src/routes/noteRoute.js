@@ -29,7 +29,7 @@ const protect = require('../middleware/authMiddleware');
  *         application/json:
  *           schema:
  *             type: object
- *             required: [title, description, date, category]
+ *             required: [title, description, category]
  *             properties:
  *               title:
  *                 type: string
@@ -37,9 +37,6 @@ const protect = require('../middleware/authMiddleware');
  *               description:
  *                 type: string
  *                 example: This is the note description
- *               date:
- *                 type: string
- *                 example: 2026-05-16
  *               category:
  *                 type: string
  *                 example: Work
@@ -125,9 +122,6 @@ router.get('/:id', protect, getNoteById);
  *               description:
  *                 type: string
  *                 example: Updated description
- *               date:
- *                 type: string
- *                 example: 2026-05-16
  *               category:
  *                 type: string
  *                 example: Class

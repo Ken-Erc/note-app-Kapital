@@ -39,9 +39,6 @@ const protect = require('../middleware/authMiddleware');
  *               description:
  *                 type: string
  *                 example: Get milk, eggs and bread
- *               dueDate:
- *                 type: string
- *                 example: 2026-05-10
  *     responses:
  *       201:
  *         description: Todo created successfully
@@ -119,9 +116,6 @@ router.get('/:id', protect, getSingleTodo);
  *               description:
  *                 type: string
  *                 example: Updated description
- *               dueDate:
- *                 type: string
- *                 example: 2026-05-15
  *     responses:
  *       200:
  *         description: Todo updated successfully

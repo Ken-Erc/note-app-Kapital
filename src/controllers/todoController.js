@@ -3,13 +3,13 @@ const Todo = require('../models/Todo');
 // Create a new todo
 const createTodo = async (req, res) => {
   try {
-    const { title, description, dueDate } = req.body;
+    const { title, description,  } = req.body;
 
     const todo = await Todo.create({
       user: req.user.id,
       title,
       description,
-      dueDate,
+       dueDate: new Date(), // Set current date as default due date
     });
 
     res.status(201).json({ success: true, data: todo });
